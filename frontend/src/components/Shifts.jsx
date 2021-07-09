@@ -54,9 +54,21 @@ function AddShift() {
   const [endTime, setEndTime] = React.useState('')
   const { shifts, fetchShifts } = React.useContext(ShiftsContext)
 
-  const handleInput = event => {
+  // const handleInput = event => {
+  //   setDate(event.target.value)
+  //   setStartTime(event.target.value)
+  //   setEndTime(event.target.value)
+  // }
+
+  const handleDate = event => {
     setDate(event.target.value)
+  }
+
+  const handleStartTime = event => {
     setStartTime(event.target.value)
+  }
+
+  const handleEndTime = event => {
     setEndTime(event.target.value)
   }
 
@@ -74,7 +86,7 @@ function AddShift() {
     }).then(fetchShifts)
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <InputGroup size='md'>
         <Input
           pr='4.5rem'
@@ -82,7 +94,7 @@ function AddShift() {
           placeholder='Enter the date'
           aria-label='Date'
           isRequired='True'
-          // onChange={handleInput}
+          onChange={handleDate}
         />
         <Input
           pr='4.5rem'
@@ -90,7 +102,7 @@ function AddShift() {
           placeholder='In'
           aria-label='In'
           isRequired='True'
-          // onChange={handleInput}
+          onChange={handleStartTime}
         />
         <Input
           pr='4.5rem'
@@ -98,9 +110,9 @@ function AddShift() {
           placeholder='Out'
           aria-label='Out'
           isRequired='True'
-          // onChange={handleInput}
+          onChange={handleEndTime}
         />
-        <Input type='submit' value='Submit' onChange={handleInput} />
+        <Input type='submit' value='Submit' onClick={handleSubmit} />
       </InputGroup>
     </form>
   )
