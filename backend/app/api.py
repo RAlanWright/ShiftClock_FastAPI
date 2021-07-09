@@ -39,13 +39,13 @@ shifts = [
     {
         "id": "1",
         "date": "07/08/2021",
-        "clockedIn": "8:00 AM",
-        "clockedOut": "12:00 PM"
+        "startTime": "8:00 AM",
+        "endTime": "12:00 PM"
     },
     {
         "id": "2",
         "date": "07/09/2021",
-        "clockedIn": "8:00 AM",
-        "clockedOut": "12:00 PM"
+        "startTime": "8:00 AM",
+        "endTime": "12:00 PM"
     },
 ]
