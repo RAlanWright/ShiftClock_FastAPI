@@ -1,22 +1,16 @@
-import React from "react";
-import { Heading, Flex, Divider } from "@chakra-ui/react";
+import React from 'react';
+import { render } from 'react-dom';
+import { ThemeProvider } from '@chakra-ui/react';
 
-const Header = () => {
+import Header from './components/Header';
+
+function App() {
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding="0.5rem"
-      bg="gray.400"
-    >
-      <Flex align="center" mr={5}>
-        <Heading as="h1" size="sm">Todos</Heading>
-        <Divider />
-      </Flex>
-    </Flex>
+    <ThemeProvider>
+      <Header />
+    </ThemeProvider>
   );
-};
+}
 
-export default Header;
+const rootElement = document.getElementById('root');
+render(<App />, rootElement);
