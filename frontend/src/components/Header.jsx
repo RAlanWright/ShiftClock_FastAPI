@@ -7,12 +7,12 @@ const Header = () => {
       as='nav'
       align='center'
       justify='space-between'
-      wrap='wrap'
+      wrap='nowrap'
       padding='0.5rem'
       bgColor='gray'
     >
       <Flex align='center' mr={5}>
-        <Heading as='h1' size='sm'>Shift Clock</Heading>
+        <Heading as='h1' size='md'>Shift Clock</Heading>
         <Divider />
       </Flex>
     </Flex>

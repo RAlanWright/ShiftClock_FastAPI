@@ -37,11 +37,11 @@ export default function Shifts() {
       <AddShift />
       <Stack spacing={5}>
         {shifts.map((shift) => (
-          <li key={shift.id}>
+          <section key={shift.id}>
             <p>Date: {shift.date}</p>
-            <p>Clocked In: {shift.startTime}</p>
-            <p>Clocked Out: {shift.endTime}</p>
-          </li>
+            <p>Start Time: {shift.startTime}</p>
+            <p>End Time: {shift.endTime}</p>
+          </section>
         ))}
       </Stack>
     </ShiftsContext.Provider>
@@ -64,8 +64,8 @@ function AddShift() {
     const newShift = {
       'id': shifts.length + 1,
       'date': date,
-      'clockedIn': startTime,
-      'clockedOut': endTime
+      'startTime': startTime,
+      'endTime': endTime
     }
     fetch('http://localhost:8000/shift', {
       method: 'POST',
@@ -83,7 +83,7 @@ function AddShift() {
           aria-label='Date'
           isRequired='True'
           // onChange={handleInput}
-          />
+        />
         <Input
           pr='4.5rem'
           type='text'
@@ -100,7 +100,7 @@ function AddShift() {
           isRequired='True'
           // onChange={handleInput}
         />
-        <Input type='submit' value='Submit' onChange={handleInput}/>
+        <Input type='submit' value='Submit' onChange={handleInput} />
       </InputGroup>
     </form>
   )
