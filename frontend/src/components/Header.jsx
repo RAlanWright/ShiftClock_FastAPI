@@ -1,5 +1,5 @@
-import React from 'react';
-import { Heading, Flex, Divider } from '@chakra-ui/react';
+import React from 'react'
+import { Heading, Flex, Divider } from '@chakra-ui/react'
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         <Divider />
       </Flex>
     </Flex>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

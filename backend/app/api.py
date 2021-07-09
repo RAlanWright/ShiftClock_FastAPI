@@ -24,7 +24,7 @@ async def read_root() -> dict:
     return {"message": "Welcome to Shift Clock!"}
 
 
-@app.get("/shifts", tags=["shifts"])
+@app.get("/shift", tags=["shifts"])
 async def get_shifts() -> dict:
     return {"data": shifts}
 
@@ -33,17 +33,13 @@ shifts = [
     {
         "id": "1",
         "date": "07/08/2021",
-        "time": {
-            "clockedIn": "8:00 AM",
-            "clockedOut": "12:00 PM"
-        }
+        "clockedIn": "8:00 AM",
+        "clockedOut": "12:00 PM"
     },
     {
         "id": "2",
         "date": "07/09/2021",
-        "time": {
-            "clockedIn": "8:00 AM",
-            "clockedOut": "12:00 PM"
-        }
+        "clockedIn": "8:00 AM",
+        "clockedOut": "12:00 PM"
     },
 ]
