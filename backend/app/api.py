@@ -28,6 +28,12 @@ async def read_root() -> dict:
 async def get_shifts() -> dict:
     return {"data": shifts}
 
+@app.post("/shift", tags=["shifts"])
+async def add_shifts(shift: dict) -> dict:
+    shifts.append(shift)
+    return {
+        "data": { "Shift added." }
+    }
 
 shifts = [
     {
