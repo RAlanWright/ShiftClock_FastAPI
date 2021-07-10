@@ -28,13 +28,31 @@ async def read_root() -> dict:
 async def get_shifts() -> dict:
     return {"data": shifts}
 
+
 @app.post("/shift", tags=["shifts"])
 async def add_shifts(shift: dict) -> dict:
     shifts.append(shift)
     return {
-        "data": { "Shift added." }
+        "data": {"Shift added."}
     }
 
+
+@app.put("/shift/{id}", tags=["shifts"])
+async def update_shift(id: int, date: dict, start: dict, end: dict) -> dict:
+    for shift in shifts:
+        if int(shift["id"]) == id:
+            shift["date"] == date["date"]
+            shift["startTime"] == start["startTime"]
+            shift["endTime"] == end["endTime"]
+            return {
+                "data": f"Shift with id {id} has been updated."
+            }
+        return {
+            "data": f"Shift with id {id} not found."
+        }
+
+
+# Dummy data for testing
 shifts = [
     {
         "id": "1",
