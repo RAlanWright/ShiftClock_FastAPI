@@ -48,6 +48,7 @@ export default function Shifts() {
   )
 }
 
+// AddShift component
 function AddShift() {
   const [date, setDate] = React.useState('')
   const [startTime, setStartTime] = React.useState('')
@@ -118,6 +119,7 @@ function AddShift() {
   )
 }
 
+// UpdateShift component
 function UpdateShift({date, startTime, endTime, id}) {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [shift, setShift] = useState({date, startTime, endTime})
