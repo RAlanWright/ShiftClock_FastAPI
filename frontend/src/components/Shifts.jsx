@@ -124,4 +124,60 @@ function UpdateShift({date, startTime, endTime, id}) {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [shift, setShift] = useState({date, startTime, endTime})
   const {fetchShifts} = React.useContext(ShiftsContext)
+
+  const updateShift = async () => {
+    await fetch(`http://localhost:8000/shift/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: shift, startTime: shift, endTime: shift })
+    })
+    onClose()
+    await fetchShifts()
+  }
+
+  // Return a modal for editing the shift
+  return (
+    <>
+      <Button h='1.5rem' size='sm' onClick={onOpen}>Edit Shift</Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay/>
+        <ModalContent>
+          <ModalHeader>Edit Shift</ModalHeader>
+          <ModalCloseButton/>
+          <ModalBody>
+            <InputGroup size='md'>
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='Date'
+                aria-label='Date'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='In'
+                aria-label='In'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='Out'
+                aria-label='Out'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+            </InputGroup>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button h='1.5rem' size='sm' onClick={updateShift}>Save</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  )
 }
