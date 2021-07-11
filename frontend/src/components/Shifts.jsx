@@ -74,6 +74,7 @@ function AddShift() {
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault()
     const newShift = {
       'id': shifts.length + 1,
       'date': date,
