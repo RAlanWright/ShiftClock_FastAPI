@@ -1,4 +1,3 @@
-from app.core.config import DATABASE_URL
 import pathlib
 import sys
 import alembic
@@ -8,7 +7,7 @@ from logging.config import fileConfig
 import logging
 
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[3]))
-
+from app.core.config import DATABASE_URL # noqa
 
 config = alembic.context.config
 
