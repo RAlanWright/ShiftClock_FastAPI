@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/challengeWIW.iml" filepath="$PROJECT_DIR$/.idea/challengeWIW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/docker-fastapi-test.iml" filepath="$PROJECT_DIR$/.idea/docker-fastapi-test.iml" />
     </modules>
   </component>
 </project>

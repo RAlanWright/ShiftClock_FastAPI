@@ -48,6 +48,7 @@ export default function Shifts() {
   )
 }
 
+// AddShift component
 function AddShift() {
   const [date, setDate] = React.useState('')
   const [startTime, setStartTime] = React.useState('')
@@ -73,6 +74,7 @@ function AddShift() {
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault()
     const newShift = {
       'id': shifts.length + 1,
       'date': date,
@@ -115,5 +117,84 @@ function AddShift() {
         <Input type='submit' value='Submit' onClick={handleSubmit} />
       </InputGroup>
     </form>
+  )
+}
+
+// UpdateShift component
+function UpdateShift({ date, startTime, endTime, id }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [shift, setShift] = useState({ date, startTime, endTime })
+  const { fetchShifts } = React.useContext(ShiftsContext)
+
+  const updateShift = async () => {
+    await fetch(`http://localhost:8000/shift/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: shift, startTime: shift, endTime: shift })
+    })
+    onClose()
+    await fetchShifts()
+  }
+
+  // Return a modal for editing the shift
+  return (
+    <>
+      <Button h='1.5rem' size='sm' onClick={onOpen}>Edit Shift</Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Edit Shift</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <InputGroup size='md'>
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='Date'
+                aria-label='Date'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='In'
+                aria-label='In'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+              <Input
+                pr='4.5rem'
+                type='text'
+                placeholder='Out'
+                aria-label='Out'
+                value={shift}
+                onChange={e => setShift(e.target.value)}
+              />
+            </InputGroup>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button h='1.5rem' size='sm' onClick={updateShift}>Save</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+}
+
+// ShiftHelper component
+function ShiftHelper({ date, startTime, endTime, id, fetchShifts }) {
+  return (
+    <Box p={1} shadow='sm'>
+      <Flex justify='space-between'>
+        <Text mt={4} as='section'>
+          {{ date, startTime, endTime }}
+          <Flex align='end'>
+            <UpdateShift date={date} startTime={startTime} endTime={endTime} id={id} fetchShifts={fetchShifts} />
+          </Flex>
+        </Text>
+      </Flex>
+    </Box>
   )
 }

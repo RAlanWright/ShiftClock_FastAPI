@@ -58,7 +58,7 @@ shifts = [
         "id": "1",
         "date": "07/08/2021",
         "startTime": "8:00 AM",
-        "endTime": "12:00 PM"
+        "endTime": "12:30 PM"
     },
     {
         "id": "2",
