@@ -2,8 +2,8 @@
 The aim for this web app is to manage shifts for one or more users.
 
 ## Backend
-Using the Python FastAPI library for speed!
-Containerized using Docker
+* Using the Python FastAPI library for speed/performance.
+* Containerized using Docker for ease of setup.
 
 ## Frontend
 Using React 👍
@@ -41,7 +41,8 @@ This uses a REST API to handle shift operations.
 ![image](https://user-images.githubusercontent.com/31636206/125523436-33a00df8-9ca2-45da-810a-f412fc29db3b.png)
 
 # Frontend Setup
-* ```yarn```
+* ```cd frontend```
+* ```yarn``` -- This should be the equivalent of `yarn add` or `yarn install`
 * ```yarn start```
 
 #### Below is an earlier iteration of the frontend:
