@@ -38,9 +38,10 @@ export default function Shifts() {
       <Stack spacing={5}>
         {shifts.map((shift) => (
           <section key={shift.id}>
+            <p>Name: {shift.name}</p>
             <p>Date: {shift.date}</p>
-            <p>Start Time: {shift.startTime}</p>
-            <p>End Time: {shift.endTime}</p>
+            <p>Start Time: {shift.start_time}</p>
+            <p>End Time: {shift.end_time}</p>
           </section>
         ))}
       </Stack>
@@ -77,9 +78,10 @@ function AddShift() {
     event.preventDefault()
     const newShift = {
       'id': shifts.length + 1,
+      'name': name,
       'date': date,
-      'startTime': startTime,
-      'endTime': endTime
+      'startTime': start_time,
+      'endTime': end_time
     }
     fetch('http://localhost:8000/shift', {
       method: 'POST',
@@ -121,16 +123,16 @@ function AddShift() {
 }
 
 // UpdateShift component
-function UpdateShift({ date, startTime, endTime, id }) {
+function UpdateShift({ name, date, start_time, end_time, id }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [shift, setShift] = useState({ date, startTime, endTime })
+  const [shift, setShift] = useState({ name, date, start_time, end_time })
   const { fetchShifts } = React.useContext(ShiftsContext)
 
   const updateShift = async () => {
     await fetch(`http://localhost:8000/shift/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ date: shift, startTime: shift, endTime: shift })
+      body: JSON.stringify({ name: shift, date: shift, start_time: shift, end_time: shift })
     })
     onClose()
     await fetchShifts()
@@ -184,14 +186,14 @@ function UpdateShift({ date, startTime, endTime, id }) {
 }
 
 // ShiftHelper component
-function ShiftHelper({ date, startTime, endTime, id, fetchShifts }) {
+function ShiftHelper({ name, date, start_time, end_time, id, fetchShifts }) {
   return (
     <Box p={1} shadow='sm'>
       <Flex justify='space-between'>
         <Text mt={4} as='section'>
-          {{ date, startTime, endTime }}
+          {{ name, date, start_time, end_time }}
           <Flex align='end'>
-            <UpdateShift date={date} startTime={startTime} endTime={endTime} id={id} fetchShifts={fetchShifts} />
+            <UpdateShift name={name} date={date} start_time={start_time} end_time={end_time} id={id} fetchShifts={fetchShifts} />
           </Flex>
         </Text>
       </Flex>

@@ -1,18 +1,17 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { ThemeProvider } from '@chakra-ui/react'
+import ReactDOM from 'react-dom'
+import { App } from './components'
+import { Provider } from 'react-redux'
 
-import Header from './components/Header'
-import Shifts from './components/Shifts'
+import configureReduxStore from './redux/store'
 
-function App() {
-  return (
-    <ThemeProvider>
-      <Header />
-      <Shifts />
-    </ThemeProvider>
-  )
-}
+const store = configureReduxStore()
 
-const rootElement = document.getElementById('root')
-render(<App />, rootElement)
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+)
