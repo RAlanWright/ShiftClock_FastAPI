@@ -21,8 +21,8 @@ def create_shifts_table() -> None:
         sa.Column("id", sa.Integer, primary_key=True),
         sa.Column("name", sa.Text, nullable=False, index=True),
         sa.Column("date", sa.Date, nullable=False),
-        sa.Column("startTime", sa.DateTime, nullable=False),
-        sa.Column("endTime", sa.DateTime, nullable=False),
+        sa.Column("start_time", sa.Time, nullable=False),
+        sa.Column("end_time", sa.Time, nullable=False),
     )
 
 
